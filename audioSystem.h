@@ -1,11 +1,8 @@
 #include <Audio.h>
 #include <Wire.h>
-#include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
 
 // GUItool: begin automatically generated code
-AudioPlayMemory          siren;       //xy=225,185
-AudioOutputAnalog        dac;           //xy=413,184
+AudioPlayMemory          siren;          //xy=250,301
+AudioOutputAnalog        dac;            //xy=438,300
 AudioConnection          patchCord1(siren, dac);
 // GUItool: end automatically generated code

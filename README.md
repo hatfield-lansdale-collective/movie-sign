@@ -1,6 +1,6 @@
 # WE'VE GOT MOVIE SIGN!
 
-This is a project between [Fordi](https://github.com/Fordi) and [cjksallan](https://github.com/cjksallan) to design and build a Big Red Button to slap, which will produce the effects of MST3K's MOVIE SIGN, e.g., a loud buzzer, a flashy light, and all around annoyance to everyone.
+This is a project between [Fordi](https://github.com/Fordi) and [cjksallan](https://github.com/cjksallan) to design and build a Big Red Button to slap, which will produce the effects of MST3K's MOVIE SIGN, e.g., a loud buzzer, a flashy light, and all around panic.
 
 * [Parts list](https://www.amazon.com/hz/wishlist/ls/E0ANLW49C5FE)
 

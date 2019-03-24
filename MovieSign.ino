@@ -1,9 +1,6 @@
-#include <Audio.h>
-#include <Wire.h>
-#include <SPI.h>
-#include <SD.h>
-#include <SerialFlash.h>
 #include <Bounce.h>
+#include "./audioSystem.h"
+#include "Siren.h"
 
 #define BIG_RED_BUTTON         0               // big red button should bridge pin 0 and ground.
 #define BIG_RED_LED            1               // big red button's LED
@@ -13,14 +10,6 @@
 #define MS_PER_LOOP            40              // Loop resolution is about 25 Hz.
 #define MS_PER_FLASH           500             // Time for 1 cycle of the flasher, about a half second
 
-// Define audio components
-AudioPlaySdWav           siren;
-AudioOutputAnalogStereo  dacs;
-
-// Connect mixDown output to DAC
-// (fromDevice, fromChannel, toDevice, toChannel)
-AudioConnection          patchLeft(siren, 0, dacs, 0);
-AudioConnection          patchRight(siren, 1, dacs, 1);
 
 // Listen for changes to the big red button
 // (pinNumber, sampleWindowInMS)
@@ -38,7 +27,7 @@ int state = 0;
 // Gets reset when user presses the bigRedButton
 elapsedMillis blaringFor;
 
-// Gets reset at the start of loop().  We use this to limit 
+// Gets reset at the start of loop().  We use this to limit
 // how often the loop runs so we can get a consistent test rate on the
 // big red button.
 elapsedMillis loopCounter;
@@ -67,7 +56,7 @@ void weveGotMovieSign() {
   state = WEVE_GOT_MOVIE_SIGN;
   digitalWrite(BIG_RED_LED, 1);
   digitalWrite(FLASHER, 1);
-  siren.play(SIREN);
+  siren.play(Siren);
   blaringFor = 0;
   bigRedLedState = 0;
 }
@@ -80,7 +69,7 @@ void noMoreMovieSign() {
   digitalWrite(FLASHER, 0);
   if (siren.isPlaying()) {
     siren.stop();
-  }  
+  }
 }
 
 
@@ -110,14 +99,14 @@ void loop() {
   if (state == WEVE_GOT_MOVIE_SIGN && !siren.isPlaying()) {
     Serial.println("Woop.  Play it again, Sam.");
     // loop that shit.
-    siren.play(SIREN);
+    siren.play(Siren);
   }
   if (WEVE_GOT_MOVIE_SIGN) {
     // Flash the LED
     // "X >> 1" is a fast integer "X / 2"
     if (bigRedLedState > (MS_PER_FLASH >> 1)) {
       // We're in the second half of the flash cycle
-      digitalWrite(BIG_RED_LED, 0);      
+      digitalWrite(BIG_RED_LED, 0);
     } else if (bigRedLedState > MS_PER_FLASH) {
       // We're at the end of the cycle
       digitalWrite(BIG_RED_LED, 1);

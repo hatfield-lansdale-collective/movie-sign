@@ -20,7 +20,7 @@ The Teensy will have two states:
 
 ## Block diagram
 
-  
+![Wiring diagram](https://raw.githubusercontent.com/hatfield-lansdale-collective/movie-sign/master/movie_sign.svg?sanitize=true)
 
     digraph MovieSign {
       node [shape="rect"]

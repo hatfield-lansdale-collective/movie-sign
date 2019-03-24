@@ -1,5 +1,7 @@
 # WE'VE GOT MOVIE SIGN!
 
+This is a project between @fordi and @cjksallan to design and build a Big Red Button to slap, which will produce the effects of MST3K's MOVIE SIGN!
+
 * [Parts list](https://www.amazon.com/hz/wishlist/ls/E0ANLW49C5FE)
 
 ## Design plan

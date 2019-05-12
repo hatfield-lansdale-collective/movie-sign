@@ -39,7 +39,7 @@ int bigRedLedState = 0;
 
 void setup() {
   // Set up serial, so there's debugging feedback
-  Serial.begin(19200);
+  // Serial.begin(19200);
   AudioMemory(8);
 
   // Set up the pin for bigRedButton
@@ -54,8 +54,6 @@ void setup() {
   // We're ready master (I'm not ready...)
   // Serial.println("Movie sign ready!");
   noMoreMovieSign();
-  delay(1000);
-  weveGotMovieSign();
 }
 
 // sets `state`, enables the flasher, starts playing
@@ -119,13 +117,13 @@ void loop() {
     // "X >> 1" is a fast integer "X / 2"
     int halfMs = MS_PER_FLASH >> 1;
     if (bigRedLedState == 0 && bigRedLedTimer >= MS_PER_FLASH) {
-      Serial.println("bigRedLed: OFF");
+      // Serial.println("bigRedLed: OFF");
       // We're in the second half of the flash cycle
       digitalWrite(BIG_RED_LED, 0);
       bigRedLedState = 1;
       bigRedLedTimer = 0;
     } else if (bigRedLedState == 1 && bigRedLedTimer >= MS_PER_FLASH) {
-      Serial.println("bigRedLed: ON");
+      // Serial.println("bigRedLed: ON");
       // We're at the end of the cycle
       digitalWrite(BIG_RED_LED, 1);
       // Reset the timer
